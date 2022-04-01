@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useMemo, useState, useRef } from 'react'
 import Notification from 'utils/Notification';
 import initLinkedListVisualiser from 'visualiser-src/linked-list-visualiser/initialiser';
 import initBSTVisualiser from 'visualiser-src/binary-search-tree-visualiser/initialiser';
+import initAVLVisualiser from 'visualiser-src/avl-tree-visualiser/initialiser';
 import { VisualiserController } from './Controller';
 import GUIMode from './Controller/GUIMode/GUIMode';
 import { Terminal } from './Controller/Terminal';
@@ -39,6 +40,9 @@ const VisualiserInterface: React.FC<Props> = ({ topicTitle }) => {
         break;
       case 'Binary Search Trees':
         setVisualiser(initBSTVisualiser());
+        break;
+      case 'AVL Trees':
+        setVisualiser(initAVLVisualiser());
         break;
       default:
         Notification.info(`Couldn't find a visualiser to load for '${topicTitle}'`);

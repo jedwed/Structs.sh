@@ -1,0 +1,20 @@
+import { Line } from '@svgdotjs/svg.js';
+import { Node } from '../util/typedefs';
+import {
+  nodeStyle, nodeWidth, textStyle, lineStyle,
+} from '../util/settings';
+import AVLAnimationProducer from './AVLAnimationProducer';
+
+export default class AVLTraverseAnimationProducer extends AVLAnimationProducer {
+  public highlightNode(node: Node): void {
+    this.addAnimation([
+      node.nodeTarget.animate(500).attr({
+        fill: '#4beb9b',
+        stroke: '#4beb9b',
+      }),
+      node.textTarget.animate(500).attr({
+        fill: '#ffffff',
+      }),
+    ]);
+  }
+}

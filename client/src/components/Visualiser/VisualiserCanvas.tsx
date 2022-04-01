@@ -34,6 +34,14 @@ const BSTCanvas: React.FC = () => (
   />
 );
 
+// AVL tree canvas
+const AVLCanvas: React.FC = () => (
+  <div
+    id="avl-canvas"
+    style={{ height: '100%', width: '100%', background: 'rgba(235, 235, 235)' }}
+  />
+);
+
 /**
  * The React component that renders the DOM elements that the visualiser
  * attaches itself to. Each visualiser may have a different canvas that it
@@ -45,6 +53,8 @@ const VisualiserCanvas: React.FC<Props> = ({ topicTitle }) => {
       return <LinkedListCanvas />;
     case 'Binary Search Trees':
       return <BSTCanvas />;
+    case 'AVL Trees':
+      return <AVLCanvas />;
     default:
       return null;
   }

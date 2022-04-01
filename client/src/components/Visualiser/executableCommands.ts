@@ -86,6 +86,40 @@ const getBSTExecutor =
     return '';
   };
 
+const getAVLExecutor =
+  (visualiser, updateTimeline) =>
+  (command: string, args: string[]): string => {
+    if (!isValidCommandArgs(command, args, 'AVL Trees')) {
+      const { usage } = getDocumentation('AVL Trees').find(
+        (operation) => operation.command === command
+      );
+      return `Invalid arguments. Usage: ${usage}`;
+    }
+    switch (command) {
+      case 'insert':
+        visualiser.insert(Number(args[0]), updateTimeline);
+        break;
+      case 'rotateLeft':
+        visualiser.rotateLeft(Number(args[0]), updateTimeline);
+        break;
+      case 'rotateRight':
+        visualiser.rotateRight(Number(args[0]), updateTimeline);
+        break;
+      case 'inorderTraversal':
+        visualiser.inorderTraversal(updateTimeline);
+        break;
+      case 'preorderTraversal':
+        visualiser.preorderTraversal(updateTimeline);
+        break;
+      case 'postorderTraversal':
+        visualiser.postorderTraversal(updateTimeline);
+        break;
+      default:
+        return `Invalid command: ${command}`;
+    }
+    return '';
+  };
+
 const undefinedExecutor =
   (topicTitle) =>
   (command: string, args: string[]): string => {
@@ -99,6 +133,8 @@ const getCommandExecutor = (topicTitle, visualiser, updateTimeline) => {
       return getLinkedListExecutor(visualiser, updateTimeline);
     case 'Binary Search Trees':
       return getBSTExecutor(visualiser, updateTimeline);
+    case 'AVL Trees':
+      return getAVLExecutor(visualiser, updateTimeline);
     default:
       return undefinedExecutor(topicTitle);
   }

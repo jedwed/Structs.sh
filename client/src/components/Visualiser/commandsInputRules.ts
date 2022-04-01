@@ -72,6 +72,34 @@ const getBstTerminalCommands = (processCommand) => ({
   },
 });
 
+/* ------------------------------ AVL Commands ------------------------------ */
+const getAvlTerminalCommands = (processCommand) => ({
+  insert: {
+    usage: 'insert <number>',
+    fn: (arg: string) => processCommand('insert', [arg]),
+  },
+  rotateLeft: {
+    usage: 'rotateLeft <number>',
+    fn: (arg: string) => processCommand('rotateLeft', [arg]),
+  },
+  rotateRight: {
+    usage: 'rotateRight <number>',
+    fn: (arg: string) => processCommand('rotateRight', [arg]),
+  },
+  inorderTraversal: {
+    usage: 'inorderTraversal',
+    fn: () => processCommand('inorderTraversal', []),
+  },
+  preorderTraversal: {
+    usage: 'preorderTraversal',
+    fn: () => processCommand('preorderTraversal', []),
+  },
+  postorderTraversal: {
+    usage: 'postorderTraversal',
+    fn: () => processCommand('postorderTraversal', []),
+  },
+});
+
 export const getVisualiserTerminalCommands = (
   topicTitle: string,
   processCommand: (command: string, args: string[]) => string,
@@ -83,6 +111,9 @@ export const getVisualiserTerminalCommands = (
       break;
     case 'Binary Search Trees':
       terminalCommands = getBstTerminalCommands(processCommand);
+      break;
+    case 'AVL Trees':
+      terminalCommands = getAvlTerminalCommands(processCommand);
       break;
     default:
       console.error(`Can't find the terminal commands for ${topicTitle}`);
@@ -164,12 +195,49 @@ const bstCommandsDocumentation: CommandDocumentation[] = [
   },
 ];
 
+/* ------------------------------ AVL Man Page ------------------------------ */
+const avlCommandsDocumentation: CommandDocumentation[] = [
+  {
+    command: 'insert',
+    usage: 'insert <value [0-999]>',
+    description:
+      'Executes standard AVL insertion to add a new node with the given value into the tree.',
+  },
+  {
+    command: 'rotateLeft',
+    usage: 'rotateLeft <value [0-999]>',
+    description: 'Executes a left rotation on the node with the given value.',
+  },
+  {
+    command: 'rotateRight',
+    usage: 'rotateRight <value [0-999]>',
+    description: 'Executes a right rotation on the node with the given value.',
+  },
+  {
+    command: 'inorderTraversal',
+    usage: 'inorderTraversal',
+    description: 'Executes an inorder traversal on the tree.',
+  },
+  {
+    command: 'preorderTraversal',
+    usage: 'preorderTraversal',
+    description: 'Executes a preorder traversal on the tree.',
+  },
+  {
+    command: 'postorderTraversal',
+    usage: 'postorderTraversal',
+    description: 'Executes a postorder traversal on the tree.',
+  },
+];
+
 export const getDocumentation = (topicTitle: string): CommandDocumentation[] => {
   switch (topicTitle) {
     case 'Linked Lists':
       return linkedListCommandsDocumentation;
     case 'Binary Search Trees':
       return bstCommandsDocumentation;
+    case 'AVL Trees':
+      return avlCommandsDocumentation;
     default:
       console.error(`Documentation for topic: '${topicTitle}' not found`);
       return [];
@@ -237,12 +305,42 @@ const guiBstCommands: Operation[] = [
   },
 ];
 
+/* ----------------------------- AVL Operations ----------------------------- */
+const guiAvlCommands: Operation[] = [
+  {
+    command: 'insert',
+    args: ['value'],
+  },
+  {
+    command: 'rotateLeft',
+    args: ['value'],
+  },
+  {
+    command: 'rotateRight',
+    args: ['value'],
+  },
+  {
+    command: 'inorderTraversal',
+    args: [],
+  },
+  {
+    command: 'preorderTraversal',
+    args: [],
+  },
+  {
+    command: 'postorderTraversal',
+    args: [],
+  },
+];
+
 export const getGUICommands = (topicTitle: string): Operation[] => {
   switch (topicTitle) {
     case 'Linked Lists':
       return guiLinkedListCommands;
     case 'Binary Search Trees':
       return guiBstCommands;
+    case 'AVL Trees':
+      return guiAvlCommands;
     default:
       console.error(`GUI commands for topic '${topicTitle}' not found.`);
       return [];
