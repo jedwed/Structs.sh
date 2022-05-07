@@ -35,7 +35,7 @@
     "react-helmet": "^6.1.0",
     "react-intersection-observer": "^8.32.5",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "5.0.1",
     "react-slick": "^0.28.1",
     "react-syntax-highlighter": "^15.4.4",
     "react-tsparticles": "^1.37.5",
