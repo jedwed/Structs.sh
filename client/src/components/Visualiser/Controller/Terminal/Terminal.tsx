@@ -82,7 +82,7 @@ const Terminal: FC<Props> = ({ executeCommand, topicTitle }) => {
       },
     },
     ls: {
-      fn: () => 'Linked Lists\nBinary Search Trees',
+      fn: () => 'Linked Lists\nBinary Search Trees\nAVL Trees',
     },
   };
 
