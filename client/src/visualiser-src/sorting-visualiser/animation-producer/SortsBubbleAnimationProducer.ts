@@ -61,8 +61,9 @@ export default class SortsBubbleAnimationProducer extends SortsAnimationProducer
 
   public highlightAllItems(items: GraphicalSortsElement[]) {
     items.forEach((item) => {
-      this.addSequenceAnimation(item.boxTarget.animate().attr({ fill: '#39AF8E' }));
-      this.addSequenceAnimation(item.numberTarget.animate().attr({ fill: '#39AF8E' }));
+      this.addSequenceAnimation(item.boxTarget.animate(100).attr({ fill: '#39AF8E' }));
+      this.addSequenceAnimation(item.numberTarget.animate(100).attr({ fill: '#39AF8E' }));
+      this.addSequenceAnimation(item.numberTarget.animate());
     });
     this.finishSequence();
   }
