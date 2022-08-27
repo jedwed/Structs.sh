@@ -86,7 +86,8 @@ export default class GraphicalSortList extends GraphicalDataStructure {
         }
       }
       if (numSwaps === 0) {
-        producer.doAnimationAndHighlight(11, producer.finishSequence, false);
+        producer.doAnimationAndHighlight(10, producer.highlightAllItems, this.elementList);
+        producer.doAnimationAndHighlight(11, producer.unhighlightAllItems, this.elementList);
         return producer;
       }
       numSwaps = 0;
