@@ -9,7 +9,6 @@ export const CANVAS = '#canvas';
 
 export const shapeAttributes = {
   'stroke-width': strokeWidth,
-  stroke: 'black',
   fill: 'black',
   opacity: 0,
 };
